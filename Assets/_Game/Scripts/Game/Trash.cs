@@ -18,9 +18,15 @@ public class Trash : MonoBehaviour
     {
         Renderer.sortingOrder = 0;
         GCGUtil.SetLayers(gameObject, "PickedUpTrash");
-        GCGUtil.Wait(this, 1, () => {
+
+        if (ObjectPicker.Instance.HeldBody == Body)
+        {
+            ObjectPicker.Instance.Drop();
+        }
+
+        GCGUtil.Wait(this, 1, () =>
+        {
             gameObject.SetActive(false);
         });
-        //gameObject.SetActive(false);
     }
 }

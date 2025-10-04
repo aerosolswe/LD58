@@ -1,8 +1,9 @@
+using GCG;
 using UnityEngine;
 
 public class TrashCollector : MonoBehaviour
 {
-
+    public ObjectPool<WorldCash> CashPool;
     public int TotalValue = 0;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,6 +27,12 @@ public class TrashCollector : MonoBehaviour
             return;
 
         TotalValue += trash.Value;
+
+        UI.Instance.CashText.text = "$" + TotalValue.FormatCurrency();
+
+        var cashObject = CashPool.GetOne();
+        cashObject.transform.localPosition = Vector2.zero;
+        cashObject.Initialize(trash.Value);
 
         trash.Collect();
     }

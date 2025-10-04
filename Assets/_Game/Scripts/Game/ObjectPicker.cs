@@ -2,7 +2,7 @@ using GCG;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ObjectPicker : MonoBehaviour
+public class ObjectPicker : Singleton<ObjectPicker>
 {
     public Camera cam;
 
@@ -15,8 +15,12 @@ public class ObjectPicker : MonoBehaviour
     public float moveSmoothness = 10f;
     public float rotateSmoothness = 5f; // how quickly it rotates toward target
 
+    public LayerMask LayerMask;
+
     private Rigidbody2D heldBody;
     private Vector3 holdPoint;
+
+    public Rigidbody2D HeldBody => heldBody;
 
     private void Update()
     {
@@ -44,10 +48,10 @@ public class ObjectPicker : MonoBehaviour
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector2 worldPos = cam.ScreenToWorldPoint(mousePos);
 
-        RaycastHit2D hit = Physics2D.Raycast(worldPos, Vector2.zero);
-        if (hit.collider != null)
+        Collider2D collider = Physics2D.OverlapPoint(worldPos, LayerMask);
+        if (collider != null)
         {
-            Rigidbody2D rb = hit.collider.attachedRigidbody;
+            Rigidbody2D rb = collider.attachedRigidbody;
             if (rb != null && rb.bodyType != RigidbodyType2D.Kinematic)
             {
                 heldBody = rb;
@@ -58,7 +62,7 @@ public class ObjectPicker : MonoBehaviour
         }
     }
 
-    private void Drop()
+    public void Drop()
     {
         if (heldBody != null)
         {

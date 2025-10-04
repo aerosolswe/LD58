@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 public class Truck : MonoBehaviour
 {
     [Header("Wheels")]
-    public WheelJoint2D RearWheel;
+    public WheelJoint2D RearWheel0;
+    public WheelJoint2D RearWheel1;
     public WheelJoint2D FrontWheel;
 
     [Header("Input")]
@@ -16,9 +17,6 @@ public class Truck : MonoBehaviour
     public float motorTorque = 2000f; 
     public float brakeDrag = 5f;
     public float normalDrag = 0.5f;
-
-    public bool frontWheelDrive = true;
-    public bool rearWheelDrive = true;
 
     private void Update()
     {
@@ -40,8 +38,10 @@ public class Truck : MonoBehaviour
 
     private void EnableMotor(float direction)
     {
-        if (RearWheel != null)
-            RearWheel.attachedRigidbody.linearDamping = normalDrag;
+        if (RearWheel0 != null)
+            RearWheel0.attachedRigidbody.linearDamping = normalDrag;
+        if (RearWheel1 != null)
+            RearWheel1.attachedRigidbody.linearDamping = normalDrag;
         if (FrontWheel != null)
             FrontWheel.attachedRigidbody.linearDamping = normalDrag;
 
@@ -51,13 +51,19 @@ public class Truck : MonoBehaviour
             maxMotorTorque = motorTorque
         };
 
-        if (rearWheelDrive && RearWheel != null)
+        if (RearWheel0 != null)
         {
-            RearWheel.motor = motor;
-            RearWheel.useMotor = true;
+            RearWheel0.motor = motor;
+            RearWheel0.useMotor = true;
         }
 
-        if (frontWheelDrive && FrontWheel != null)
+        if (RearWheel1 != null)
+        {
+            RearWheel1.motor = motor;
+            RearWheel1.useMotor = true;
+        }
+
+        if (FrontWheel != null)
         {
             FrontWheel.motor = motor;
             FrontWheel.useMotor = true;
@@ -66,8 +72,10 @@ public class Truck : MonoBehaviour
 
     private void BrakeMotor()
     {
-        if (RearWheel != null)
-            RearWheel.attachedRigidbody.linearDamping = brakeDrag;
+        if (RearWheel0 != null)
+            RearWheel0.attachedRigidbody.linearDamping = brakeDrag;
+        if (RearWheel1 != null)
+            RearWheel1.attachedRigidbody.linearDamping = brakeDrag;
         if (FrontWheel != null)
             FrontWheel.attachedRigidbody.linearDamping = brakeDrag;
 
@@ -77,13 +85,19 @@ public class Truck : MonoBehaviour
             maxMotorTorque = motorTorque // stronger brake torque
         };
 
-        if (rearWheelDrive && RearWheel != null)
+        if (RearWheel0 != null)
         {
-            RearWheel.motor = motor;
-            RearWheel.useMotor = true;
+            RearWheel0.motor = motor;
+            RearWheel0.useMotor = true;
         }
 
-        if (frontWheelDrive && FrontWheel != null)
+        if (RearWheel1 != null)
+        {
+            RearWheel1.motor = motor;
+            RearWheel1.useMotor = true;
+        }
+
+        if (FrontWheel != null)
         {
             FrontWheel.motor = motor;
             FrontWheel.useMotor = true;
