@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
+    public Sprite[] sprites;
     public SpriteRenderer Renderer;
     public Rigidbody2D Body;
     public ObjectPool<Trash> Pool;
@@ -11,6 +12,8 @@ public class Trash : MonoBehaviour
 
     private void OnEnable()
     {
+        sprites.Shuffle();
+        Renderer.sprite = sprites[0];
         GCGUtil.SetLayers(gameObject, "Trash");
     }
 

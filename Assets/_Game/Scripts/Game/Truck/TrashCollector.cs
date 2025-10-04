@@ -28,7 +28,7 @@ public class TrashCollector : MonoBehaviour
 
         TotalValue += trash.Value;
 
-        UI.Instance.CashText.text = "$" + TotalValue.FormatCurrency();
+        UI.Instance.CashText.text = "€" + TotalValue.FormatCurrency();
 
         var cashObject = CashPool.GetOne();
         cashObject.transform.localPosition = Vector2.zero;

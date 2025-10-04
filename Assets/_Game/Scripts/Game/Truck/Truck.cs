@@ -22,9 +22,9 @@ public class Truck : MonoBehaviour
     {
         float direction = 0f;
 
-        if (MoveRightInputRef.action.IsPressed())
+        if (MoveRightInputRef.action.IsPressed() && GameController.Instance.State == GameController.GameState.Active)
             direction = -1f;
-        else if (MoveLeftInputRef.action.IsPressed())
+        else if (MoveLeftInputRef.action.IsPressed() && GameController.Instance.State == GameController.GameState.Active)
             direction = 1f;
 
         if (Mathf.Abs(direction) > 0.01f)

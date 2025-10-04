@@ -24,10 +24,10 @@ public class ObjectPicker : Singleton<ObjectPicker>
 
     private void Update()
     {
-        if (clickActionRef.action.WasPressedThisFrame())
+        if (clickActionRef.action.WasPressedThisFrame() && GameController.Instance.State == GameController.GameState.Active)
         {
             TryPickup();
-        } else if (clickActionRef.action.WasReleasedThisFrame())
+        } else if (clickActionRef.action.WasReleasedThisFrame() || GameController.Instance.State != GameController.GameState.Active)
         {
             Drop();
         }
