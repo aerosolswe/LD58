@@ -1,3 +1,5 @@
+using GCG;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +14,24 @@ public class Truck : MonoBehaviour
     public InputActionReference MoveRightInputRef;
     public InputActionReference MoveLeftInputRef;
 
+    [Header("Upgrades")]
+    public TruckPlow Plow;
+
     [Header("Settings")]
     public float motorSpeed = 1000f;
     public float motorTorque = 2000f; 
     public float brakeDrag = 5f;
     public float normalDrag = 0.5f;
+
+    private void Start()
+    {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
+        Plow.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_plow", "0") == "1");
+    }
 
     private void Update()
     {

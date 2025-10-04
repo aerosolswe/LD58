@@ -12,6 +12,8 @@ public class GameController : Singleton<GameController>
 
     public GameState State = GameState.Pre;
 
+    public float RoundTime = 60.0f;
+    public float CurrentTime = 0.0f;
 
     private void Start()
     {
@@ -27,7 +29,31 @@ public class GameController : Singleton<GameController>
 
     public void SetActiveState()
     {
+        CurrentTime = 0;
         State = GameState.Active;
         UI.Instance.ActiveScreen.Show();
+    }
+
+    public void SetPostState()
+    {
+        State = GameState.Post;
+        //UI.Instance.ActiveScreen.Show();
+    }
+
+    private void Update()
+    {
+        if (State == GameState.Active)
+        {
+            CurrentTime += Time.deltaTime;
+
+            float time = Mathf.Max(RoundTime - CurrentTime, 0);
+            UI.Instance.ActiveScreen.TimeText.text = (int)time + " sec";
+
+            if (CurrentTime > RoundTime)
+            {
+                CurrentTime = 0;
+                SetPostState();
+            }
+        }
     }
 }

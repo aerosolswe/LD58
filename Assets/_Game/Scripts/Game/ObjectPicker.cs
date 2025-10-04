@@ -17,6 +17,7 @@ public class ObjectPicker : Singleton<ObjectPicker>
 
     public LayerMask LayerMask;
 
+    private float tempDamping = 0.0f;
     private Rigidbody2D heldBody;
     private Vector3 holdPoint;
 
@@ -56,6 +57,7 @@ public class ObjectPicker : Singleton<ObjectPicker>
             {
                 heldBody = rb;
                 heldBody.gravityScale = 0f;
+                tempDamping = heldBody.linearDamping;
                 heldBody.linearDamping = 10f;
                 //GCGUtil.SetLayers(heldBody.gameObject, "PickedUpTrash");
             }
@@ -67,7 +69,7 @@ public class ObjectPicker : Singleton<ObjectPicker>
         if (heldBody != null)
         {
             heldBody.gravityScale = 1f;
-            heldBody.linearDamping = 0f;
+            heldBody.linearDamping = tempDamping;
             heldBody = null;
         }
     }
