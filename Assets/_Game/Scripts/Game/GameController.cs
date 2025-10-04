@@ -37,7 +37,7 @@ public class GameController : Singleton<GameController>
     public void SetPostState()
     {
         State = GameState.Post;
-        //UI.Instance.ActiveScreen.Show();
+        UI.Instance.PostScreen.Show();
     }
 
     private void Update()

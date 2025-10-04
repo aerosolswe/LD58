@@ -12,6 +12,8 @@ public class UIActiveScreen : UIScreen
 
     public override void Show()
     {
+        UI.Instance.ActiveScreen.TimeText.text = (int)0 + " sec";
+
         base.Show();
     }
 
