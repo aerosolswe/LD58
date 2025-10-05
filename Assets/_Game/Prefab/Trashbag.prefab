@@ -50,6 +50,8 @@ MonoBehaviour:
   - {fileID: -1520317151641586321, guid: b562cb5f0aacfeb41930093ede252905, type: 3}
   - {fileID: 2343573831506791063, guid: 82d83a1f6c635064ba3dd71aa83ab838, type: 3}
   - {fileID: -9199226215346298280, guid: e1aa20be6d3864c44b960be9a7f4c0e0, type: 3}
+  Colliders:
+  - {fileID: 948805144407375963}
   Renderer: {fileID: 2753521449547530951}
   Body: {fileID: 7215737735536392073}
   Pool:

@@ -16,6 +16,10 @@ public class Truck : MonoBehaviour
 
     [Header("Upgrades")]
     public TruckPlow Plow;
+    public TruckSideLoader SideLoader0;
+    public TruckSideLoader SideLoader1;
+    public TruckSideLoader SideLoader2;
+    public TruckSideLoader SideLoader3;
 
     [Header("Settings")]
     public float motorSpeed = 1000f;
@@ -31,6 +35,11 @@ public class Truck : MonoBehaviour
     public void Initialize()
     {
         Plow.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_plow", "0") == "1");
+
+        SideLoader0.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_side_loader", "0") == "1");
+        SideLoader1.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_side_loader", "0") == "2");
+        SideLoader2.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_side_loader", "0") == "3");
+        SideLoader3.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_side_loader", "0") == "4");
     }
 
     private void Update()

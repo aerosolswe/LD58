@@ -6,6 +6,7 @@ public class TruckSideLoader : MonoBehaviour
 {
     public Animation Animation;
     public TrashCollector TrashCollector;
+    public Collider2D TriggerCollider;
 
     public bool Busy = false;
 
@@ -19,18 +20,13 @@ public class TruckSideLoader : MonoBehaviour
         if (trash == null || !trash.SideLoaderCapable || Busy)
             return;
 
+        Debug.Log("HALLO");
         Busy = true;
+        TriggerCollider.enabled = false;
         Animation.Play();
         trash.Renderer.enabled = false;
         trash.Body.bodyType = RigidbodyType2D.Kinematic;
-
-        Collider2D[] collider2Ds = new Collider2D[0];
-        int colliderCount = trash.Body.GetAttachedColliders(collider2Ds);
-
-        for (int i = 0; i < colliderCount; i++)
-        {
-            collider2Ds[i].enabled = false;
-        }
+        trash.EnableColliders(false);
 
         StartCoroutine(Routine(trash));
     }
@@ -44,5 +40,6 @@ public class TruckSideLoader : MonoBehaviour
         yield return GCGUtil.Yield(1.3f);
 
         Busy = false;
+        TriggerCollider.enabled = true;
     }
 }

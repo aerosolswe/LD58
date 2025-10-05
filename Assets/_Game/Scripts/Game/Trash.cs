@@ -4,6 +4,7 @@ using UnityEngine;
 public class Trash : MonoBehaviour
 {
     public Sprite[] sprites;
+    public Collider2D[] Colliders;
     public SpriteRenderer Renderer;
     public Rigidbody2D Body;
     public ObjectPool<Trash> Pool;
@@ -17,6 +18,7 @@ public class Trash : MonoBehaviour
         sprites.Shuffle();
         Renderer.sprite = sprites[0];
         GCGUtil.SetLayers(gameObject, "Trash");
+        EnableColliders(true);
     }
 
     public void Collect()
@@ -34,14 +36,14 @@ public class Trash : MonoBehaviour
             gameObject.SetActive(false);
             Renderer.enabled = true;
             Body.bodyType = RigidbodyType2D.Dynamic;
-
-            Collider2D[] collider2Ds = new Collider2D[0];
-            int colliderCount = Body.GetAttachedColliders(collider2Ds);
-
-            for (int i = 0; i < colliderCount; i++)
-            {
-                collider2Ds[i].enabled = true;
-            }
         });
+    }
+
+    public void EnableColliders(bool enable)
+    {
+        foreach (Collider2D collider in Colliders)
+        {
+            collider.enabled = enable;
+        }
     }
 }
