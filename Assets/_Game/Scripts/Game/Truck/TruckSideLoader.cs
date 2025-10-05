@@ -22,6 +22,7 @@ public class TruckSideLoader : MonoBehaviour
 
         Busy = true;
         TriggerCollider.enabled = false;
+        Animation.Stop();
         Animation.Play();
         trash.Renderer.enabled = false;
         trash.Body.bodyType = RigidbodyType2D.Kinematic;
