@@ -34,6 +34,14 @@ public class Trash : MonoBehaviour
             gameObject.SetActive(false);
             Renderer.enabled = true;
             Body.bodyType = RigidbodyType2D.Dynamic;
+
+            Collider2D[] collider2Ds = new Collider2D[0];
+            int colliderCount = Body.GetAttachedColliders(collider2Ds);
+
+            for (int i = 0; i < colliderCount; i++)
+            {
+                collider2Ds[i].enabled = true;
+            }
         });
     }
 }
