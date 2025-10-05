@@ -3574,8 +3574,8 @@ Transform:
   m_GameObject: {fileID: 1126012462}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 98.7654, y: -3.581, z: 0}
-  m_LocalScale: {x: 182.466, y: 0.15398084, z: 1}
+  m_LocalPosition: {x: 328.331, y: -3.568, z: 0}
+  m_LocalScale: {x: 641.6448, y: 0.13640288, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1951246494}
@@ -6677,8 +6677,8 @@ MonoBehaviour:
     prefab: {fileID: 8175918115311800051, guid: 8c2ffe9d3369d9a4d8534b2ff0b73858, type: 3}
     parent: {fileID: 234563538}
   SpawnBounds: {fileID: 1126012464}
-  bagsCount: 45
-  cansCount: 25
+  bagsCount: 150
+  cansCount: 100
   jitter: 0.3
 --- !u!4 &1951246494
 Transform:
