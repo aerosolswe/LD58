@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class UI : Singleton<UI>
 {
-    public TextMeshProUGUI CashText;
     public UIPreScreen PreScreen;
     public UIActiveScreen ActiveScreen;
     public UIPostScreen PostScreen;

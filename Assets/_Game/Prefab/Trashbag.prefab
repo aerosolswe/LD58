@@ -55,6 +55,7 @@ MonoBehaviour:
   Pool:
     prefab: {fileID: 0}
     parent: {fileID: 0}
+  SideLoaderCapable: 0
   Value: 5
 --- !u!50 &7215737735536392073
 Rigidbody2D:
@@ -68,8 +69,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0.1
+  m_Mass: 0.0001
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}

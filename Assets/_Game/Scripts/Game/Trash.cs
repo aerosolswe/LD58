@@ -8,6 +8,8 @@ public class Trash : MonoBehaviour
     public Rigidbody2D Body;
     public ObjectPool<Trash> Pool;
 
+    public bool SideLoaderCapable = false;
+
     public int Value = 5;
 
     private void OnEnable()
@@ -30,6 +32,8 @@ public class Trash : MonoBehaviour
         GCGUtil.Wait(this, 1, () =>
         {
             gameObject.SetActive(false);
+            Renderer.enabled = true;
+            Body.bodyType = RigidbodyType2D.Dynamic;
         });
     }
 }
