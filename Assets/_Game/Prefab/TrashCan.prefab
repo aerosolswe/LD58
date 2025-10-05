@@ -190,9 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trash
   sprites:
-  - {fileID: -1520317151641586321, guid: b562cb5f0aacfeb41930093ede252905, type: 3}
-  - {fileID: 2343573831506791063, guid: 82d83a1f6c635064ba3dd71aa83ab838, type: 3}
-  - {fileID: -9199226215346298280, guid: e1aa20be6d3864c44b960be9a7f4c0e0, type: 3}
+  - {fileID: 21300000, guid: d223e2c406a7fd3439933c3283174f3b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   Renderer: {fileID: 9066789826955516162}
   Body: {fileID: 2179807318070003418}
   Pool:
@@ -212,8 +212,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDamping: 1
+  m_Mass: 1
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}

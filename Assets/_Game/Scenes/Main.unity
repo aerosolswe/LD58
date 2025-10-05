@@ -5174,8 +5174,8 @@ MonoBehaviour:
     prefab: {fileID: 8754708897079176555, guid: cb2f1ee2a08485145b943ade4884d359, type: 3}
     parent: {fileID: 1951246494}
   CanPool:
-    prefab: {fileID: 0}
-    parent: {fileID: 0}
+    prefab: {fileID: 8175918115311800051, guid: 8c2ffe9d3369d9a4d8534b2ff0b73858, type: 3}
+    parent: {fileID: 1951246494}
   SpawnBounds: {fileID: 1126012464}
   trashCount: 25
   jitter: 0.3

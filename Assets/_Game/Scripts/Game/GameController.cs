@@ -21,6 +21,11 @@ public class GameController : Singleton<GameController>
         SetPreState();
     }
 
+    private void OnApplicationQuit()
+    {
+        UserDataManager.Save();
+    }
+
     public void SetPreState()
     {
         State = GameState.Pre;

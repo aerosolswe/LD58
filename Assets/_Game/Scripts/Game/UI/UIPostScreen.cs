@@ -20,11 +20,12 @@ public class UIPostScreen : UIScreen
 
         if (totalValue > prevHighscore)
         {
-            UserDataManager.SetSavedValue("highscore", totalValue.ToString());
+            UserDataManager.SetSavedValue("highscore", totalValue);
         }
 
         int totalEarned = int.Parse(UserDataManager.GetSavedValue("total_earned", "0"));
-        UserDataManager.SetSavedValue("total_earned", (totalEarned + totalValue).ToString());
+        totalEarned += totalValue;
+        UserDataManager.SetSavedValue("total_earned", totalEarned);
 
         BackButton.onClick.RemoveAllListeners();
         BackButton.onClick.AddListener(OnBackClicked);
