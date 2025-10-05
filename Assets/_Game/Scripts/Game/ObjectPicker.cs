@@ -59,7 +59,7 @@ public class ObjectPicker : Singleton<ObjectPicker>
                 heldBody.gravityScale = 0f;
                 tempDamping = heldBody.linearDamping;
                 heldBody.linearDamping = 10f;
-                //GCGUtil.SetLayers(heldBody.gameObject, "PickedUpTrash");
+                GCGUtil.SetLayers(heldBody.gameObject, "PickedUpTrash");
             }
         }
     }
@@ -68,6 +68,7 @@ public class ObjectPicker : Singleton<ObjectPicker>
     {
         if (heldBody != null)
         {
+            GCGUtil.SetLayers(heldBody.gameObject, "Trash");
             heldBody.gravityScale = 1f;
             heldBody.linearDamping = tempDamping;
             heldBody = null;

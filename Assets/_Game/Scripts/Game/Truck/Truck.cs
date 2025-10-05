@@ -27,6 +27,12 @@ public class Truck : MonoBehaviour
     public float brakeDrag = 5f;
     public float normalDrag = 0.5f;
 
+    public float brakeUpgradeAmount = 1.0f;
+    public float engineUpgradeAmount = 100.0f;
+
+    private float extraMotorSpeed = 0.0f;
+    private float extraBrakeSpeed = 0.0f;
+
     private void Start()
     {
         Initialize();
@@ -36,10 +42,16 @@ public class Truck : MonoBehaviour
     {
         Plow.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_plow", "0") == "1");
 
-        SideLoader0.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_side_loader", "0") == "1");
-        SideLoader1.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_side_loader", "0") == "2");
-        SideLoader2.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_side_loader", "0") == "3");
-        SideLoader3.gameObject.SetActive(UserDataManager.GetSavedValue("upgrade_side_loader", "0") == "4");
+        SideLoader0.gameObject.SetActive(int.Parse(UserDataManager.GetSavedValue("upgrade_side_loader", "0")) >= 1);
+        SideLoader1.gameObject.SetActive(int.Parse(UserDataManager.GetSavedValue("upgrade_side_loader", "0")) >= 2);
+        SideLoader2.gameObject.SetActive(int.Parse(UserDataManager.GetSavedValue("upgrade_side_loader", "0")) >= 3);
+        SideLoader3.gameObject.SetActive(int.Parse(UserDataManager.GetSavedValue("upgrade_side_loader", "0")) >= 4);
+
+        extraBrakeSpeed = 0.0f;
+        extraBrakeSpeed += int.Parse(UserDataManager.GetSavedValue("upgrade_brakes", "0")) * brakeUpgradeAmount;
+
+        extraMotorSpeed = 0.0f;
+        extraMotorSpeed += int.Parse(UserDataManager.GetSavedValue("upgrade_engine", "0")) * engineUpgradeAmount;
     }
 
     private void Update()
@@ -71,8 +83,8 @@ public class Truck : MonoBehaviour
 
         JointMotor2D motor = new JointMotor2D
         {
-            motorSpeed = motorSpeed * direction,
-            maxMotorTorque = motorTorque
+            motorSpeed = (motorSpeed + extraMotorSpeed) * direction,
+            maxMotorTorque = motorTorque + (extraMotorSpeed / 2.0f)
         };
 
         if (RearWheel0 != null)
@@ -106,7 +118,7 @@ public class Truck : MonoBehaviour
         JointMotor2D motor = new JointMotor2D
         {
             motorSpeed = 0f,                         // stops wheel rotation
-            maxMotorTorque = motorTorque // stronger brake torque
+            maxMotorTorque = motorTorque + extraBrakeSpeed // stronger brake torque
         };
 
         if (RearWheel0 != null)

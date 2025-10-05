@@ -10,7 +10,7 @@ public class TruckPlow : MonoBehaviour
 
     private bool collecting = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collecting)
             return;
@@ -18,15 +18,18 @@ public class TruckPlow : MonoBehaviour
         Collider.enabled = true;
         Trigger.enabled = false;
 
+        StopAllCoroutines();
+        Animation.Stop();
         Animation.Play();
         StartCoroutine(DelayedActivate());
     }
-
+    
     IEnumerator DelayedActivate()
     {
         yield return GCGUtil.Yield(6.0f);
         Trigger.enabled = true;
         collecting = false;
+        InactivateCollider();
     }
 
     public void InactivateCollider()

@@ -8,13 +8,14 @@ public class TrashPool : MonoBehaviour
     public SpriteRenderer SpawnBounds;
 
     [Header("Spawn Settings")]
-    public int trashCount = 25;
+    public int bagsCount = 25;
+    public int cansCount = 25;
     public float jitter = 0.3f; // how much randomness inside each cell
 
     private void Start()
     {
-        SpawnTrash(BagPool, trashCount);
-        SpawnTrash(CanPool, trashCount);
+        SpawnTrash(BagPool, bagsCount);
+        SpawnTrash(CanPool, cansCount);
     }
 
     public void SpawnTrash(ObjectPool<Trash> pool, int trashCount)

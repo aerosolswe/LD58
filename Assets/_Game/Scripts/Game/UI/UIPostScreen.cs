@@ -16,6 +16,9 @@ public class UIPostScreen : UIScreen
         int totalValue = trashCollector.TotalValue;
         ScoreText.text = "SCORE\n€ " + totalValue.FormatCurrency();
 
+        int cash = int.Parse(UserDataManager.GetSavedValue("cash", "0"));
+        UserDataManager.SetSavedValue("cash", cash + totalValue);
+
         int prevHighscore = int.Parse(UserDataManager.GetSavedValue("highscore", "0"));
 
         if (totalValue > prevHighscore)

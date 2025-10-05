@@ -24,7 +24,7 @@ public class Trash : MonoBehaviour
     public void Collect()
     {
         Renderer.sortingOrder = 0;
-        GCGUtil.SetLayers(gameObject, "PickedUpTrash");
+        GCGUtil.SetLayers(gameObject, "CollectedTrash");
 
         if (ObjectPicker.Instance.HeldBody == Body)
         {

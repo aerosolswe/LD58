@@ -10,7 +10,7 @@ public class TruckSideLoader : MonoBehaviour
 
     public bool Busy = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         Trash trash = collision.GetComponent<Trash>();
 
@@ -20,7 +20,6 @@ public class TruckSideLoader : MonoBehaviour
         if (trash == null || !trash.SideLoaderCapable || Busy)
             return;
 
-        Debug.Log("HALLO");
         Busy = true;
         TriggerCollider.enabled = false;
         Animation.Play();
