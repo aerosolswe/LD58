@@ -4,6 +4,7 @@ using UnityEngine;
 public class TrashPool : MonoBehaviour
 {
     public ObjectPool<Trash> BagPool;
+    public ObjectPool<Trash> CanPool;
     public SpriteRenderer SpawnBounds;
 
     [Header("Spawn Settings")]
@@ -12,10 +13,11 @@ public class TrashPool : MonoBehaviour
 
     private void Start()
     {
-        SpawnTrash();
+        SpawnTrash(BagPool, trashCount);
+        SpawnTrash(CanPool, trashCount);
     }
 
-    public void SpawnTrash()
+    public void SpawnTrash(ObjectPool<Trash> pool, int trashCount)
     {
         Bounds bounds = SpawnBounds.bounds;
 
@@ -33,7 +35,7 @@ public class TrashPool : MonoBehaviour
                 if (spawned >= trashCount)
                     return;
 
-                var trash = BagPool.GetOne();
+                var trash = pool.GetOne();
 
                 // Base position in the cell center
                 float x = bounds.min.x + gx * cellWidth + cellWidth / 2f;
