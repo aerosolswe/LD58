@@ -1,14 +1,23 @@
 using GCG;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Truck : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioSource startSFX;
+    public AudioSource idleSFX;
+    public AudioSource giveGasSFX;
+    public AudioSource stopGasSFX;
+    public AudioSource idleGasSFX;
+
     [Header("Wheels")]
     public WheelJoint2D RearWheel0;
     public WheelJoint2D RearWheel1;
     public WheelJoint2D FrontWheel;
+    public Rigidbody2D Body;
 
     [Header("Input")]
     public InputActionReference MoveRightInputRef;
@@ -23,7 +32,7 @@ public class Truck : MonoBehaviour
 
     [Header("Settings")]
     public float motorSpeed = 1000f;
-    public float motorTorque = 2000f; 
+    public float motorTorque = 2000f;
     public float brakeDrag = 5f;
     public float normalDrag = 0.5f;
 
@@ -33,9 +42,79 @@ public class Truck : MonoBehaviour
     private float extraMotorSpeed = 0.0f;
     private float extraBrakeSpeed = 0.0f;
 
+    public bool GivingGas
+    {
+        get; set;
+    }
+
+    public bool Braking
+    {
+        get; set;
+    }
+
     private void Start()
     {
         Initialize();
+        Audio();
+    }
+
+    public void Audio()
+    {
+        StartCoroutine(startSound());
+        StartCoroutine(idleLoop());
+        StartCoroutine(gasLoop());
+
+        IEnumerator startSound()
+        {
+            yield return GCGUtil.Yield(1.0f);
+            startSFX.Play();
+        }
+
+        IEnumerator idleLoop()
+        {
+            yield return GCGUtil.Yield(2.0f);
+            idleSFX.Play();
+        }
+
+
+        IEnumerator gasLoop()
+        {
+            bool previouslyGaveGas = false;
+            Coroutine routine = null;
+
+            while (true)
+            {
+                yield return null;
+
+                if (GivingGas && !previouslyGaveGas)
+                {
+                    previouslyGaveGas = true;
+                    stopGasSFX.Stop();
+                    giveGasSFX.Play();
+
+                    routine = StartCoroutine(idleGas(giveGasSFX.clip.length - 0.0f));
+
+                } else if (!GivingGas && previouslyGaveGas)
+                {
+                    previouslyGaveGas = false;
+                    if (routine != null)
+                        StopCoroutine(routine);
+                    giveGasSFX.Stop();
+                    idleGasSFX.Stop();
+
+                    if (Body.linearVelocity.magnitude > 3.5f)
+                    {
+                        stopGasSFX.Play();
+                    }
+                }
+            }
+        }
+
+        IEnumerator idleGas(float time)
+        {
+            yield return GCGUtil.Yield(time);
+            idleGasSFX.Play();
+        }
     }
 
     public void Initialize()
@@ -74,6 +153,9 @@ public class Truck : MonoBehaviour
 
     private void EnableMotor(float direction)
     {
+        GivingGas = true;
+        Braking = false;
+
         if (RearWheel0 != null)
             RearWheel0.attachedRigidbody.linearDamping = normalDrag;
         if (RearWheel1 != null)
@@ -108,6 +190,9 @@ public class Truck : MonoBehaviour
 
     private void BrakeMotor()
     {
+        GivingGas = false;
+        Braking = true;
+
         if (RearWheel0 != null)
             RearWheel0.attachedRigidbody.linearDamping = brakeDrag;
         if (RearWheel1 != null)

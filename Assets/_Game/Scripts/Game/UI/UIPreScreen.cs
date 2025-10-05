@@ -24,6 +24,8 @@ public class UIPreScreen : UIScreen
 
     public Truck truck;
 
+    public AudioSource UpgradeSFX;
+
     public Upgrade[] upgrades;
 
     public override void Show()
@@ -75,6 +77,7 @@ public class UIPreScreen : UIScreen
 
         if (cash >= upgrade.Cost)
         {
+            UpgradeSFX.Play();
             cash -= upgrade.Cost;
             UserDataManager.SetSavedValue("cash", cash);
             CashText.text = "€ " + int.Parse(UserDataManager.GetSavedValue("cash", "0")).FormatCurrency();
