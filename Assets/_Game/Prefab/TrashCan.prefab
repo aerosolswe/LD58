@@ -190,9 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Trash
   sprites:
-  - {fileID: 21300000, guid: d223e2c406a7fd3439933c3283174f3b, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300000, guid: ad1e2101f5e4b704d84a372b6a0f6d61, type: 3}
   Renderer: {fileID: 9066789826955516162}
   Body: {fileID: 2179807318070003418}
   Pool:

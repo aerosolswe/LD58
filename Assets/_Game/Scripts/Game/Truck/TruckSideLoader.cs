@@ -13,6 +13,9 @@ public class TruckSideLoader : MonoBehaviour
     {
         Trash trash = collision.GetComponent<Trash>();
 
+        if (trash == null)
+            trash = collision.GetComponentInParent<Trash>();
+
         if (trash == null || !trash.SideLoaderCapable || Busy)
             return;
 
@@ -20,6 +23,14 @@ public class TruckSideLoader : MonoBehaviour
         Animation.Play();
         trash.Renderer.enabled = false;
         trash.Body.bodyType = RigidbodyType2D.Kinematic;
+
+        Collider2D[] collider2Ds = new Collider2D[0];
+        int colliderCount = trash.Body.GetAttachedColliders(collider2Ds);
+
+        for (int i = 0; i < colliderCount; i++)
+        {
+            collider2Ds[i].enabled = false;
+        }
 
         StartCoroutine(Routine(trash));
     }
