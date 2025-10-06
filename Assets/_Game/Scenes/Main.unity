@@ -7731,7 +7731,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 7c02c1b29623538448bed566c178549c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8251,22 +8251,22 @@ MonoBehaviour:
   UpgradeSFX: {fileID: 1979338060}
   upgrades:
   - Id: upgrade_plow
-    Cost: 60
+    Cost: 50
     Max: 1
     ButtonText: PLOW
     Button: {fileID: 949182482}
   - Id: upgrade_side_loader
-    Cost: 50
+    Cost: 80
     Max: 4
     ButtonText: SIDELOADER
     Button: {fileID: 1976938786}
   - Id: upgrade_brakes
-    Cost: 30
+    Cost: 50
     Max: 5
     ButtonText: BRAKES
     Button: {fileID: 887541572}
   - Id: upgrade_engine
-    Cost: 45
+    Cost: 50
     Max: 5
     ButtonText: ENGINE
     Button: {fileID: 1336853133}
