@@ -24,6 +24,7 @@ public class UIPreScreen : UIScreen
 
     public Truck truck;
 
+    public AudioSource StartSFX;
     public AudioSource UpgradeSFX;
 
     public Upgrade[] upgrades;
@@ -47,6 +48,7 @@ public class UIPreScreen : UIScreen
     {
         Hide();
         GameController.Instance.SetActiveState();
+        StartSFX.Play();
     }
 
     public void InitializeUpgrades()

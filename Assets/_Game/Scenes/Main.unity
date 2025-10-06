@@ -8155,6 +8155,7 @@ GameObject:
   - component: {fileID: 1979338057}
   - component: {fileID: 1979338056}
   - component: {fileID: 1979338060}
+  - component: {fileID: 1979338061}
   m_Layer: 5
   m_Name: PreScreen
   m_TagString: Untagged
@@ -8248,6 +8249,7 @@ MonoBehaviour:
   CashText: {fileID: 410796409}
   PlayButton: {fileID: 676838665}
   truck: {fileID: 1737597811}
+  StartSFX: {fileID: 1979338061}
   UpgradeSFX: {fileID: 1979338060}
   upgrades:
   - Id: upgrade_plow
@@ -8292,6 +8294,103 @@ AudioSource:
   m_Resource: {fileID: 8300000, guid: c0deb2acc631ab342b4792989231407a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1979338061
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979338054}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 14d49ea4d6466a346b7d29af7cbb123c, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 48189bf2fd825df4a9f10b6b56c82504, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -9030,7 +9129,7 @@ PrefabInstance:
     - target: {fileID: 3127597968950838598, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
       propertyPath: SFX
       value: 
-      objectReference: {fileID: 7311975282767615209}
+      objectReference: {fileID: 0}
     - target: {fileID: 3127597968950838598, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
       propertyPath: Truck
       value: 
@@ -9044,11 +9143,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
---- !u!82 &7311975282767615209 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6181822562862245553, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
-  m_PrefabInstance: {fileID: 7311975282767615208}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
