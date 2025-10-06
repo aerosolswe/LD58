@@ -1417,10 +1417,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1979338055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -602, y: -469}
-  m_SizeDelta: {x: 497.76, y: 117.88}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 490, y: 71}
+  m_SizeDelta: {x: 497.76, y: 117.880005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410796409
 MonoBehaviour:
@@ -4439,9 +4439,9 @@ RectTransform:
   - {fileID: 1336853132}
   m_Father: {fileID: 1979338055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 465.28, y: -469}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -494.72003, y: -469}
   m_SizeDelta: {x: 1030.57, y: 117.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090041083
@@ -6921,7 +6921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 159, y: 47}
+  m_AnchoredPosition: {x: 103, y: 47}
   m_SizeDelta: {x: 95.20996, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1721836998
@@ -9027,6 +9027,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3127597968950838598, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 7311975282767615209}
+    - target: {fileID: 3127597968950838598, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
+      propertyPath: Truck
+      value: 
+      objectReference: {fileID: 1737597811}
     - target: {fileID: 4357332096071938655, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
       propertyPath: m_Name
       value: Scenery
@@ -9036,6 +9044,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
+--- !u!82 &7311975282767615209 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6181822562862245553, guid: a044e89e22a3f08489eb578d35536f80, type: 3}
+  m_PrefabInstance: {fileID: 7311975282767615208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

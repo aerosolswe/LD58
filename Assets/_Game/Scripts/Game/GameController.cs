@@ -17,6 +17,7 @@ public class GameController : Singleton<GameController>
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         UserDataManager.Init();
         SetPreState();
     }

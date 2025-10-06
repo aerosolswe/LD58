@@ -12,7 +12,7 @@ public class UI : Singleton<UI>
 
     private void Start()
     {
-        VolumeSlider.value = float.Parse(UserDataManager.GetSavedValue("volume", "0,5"));
+        VolumeSlider.value = float.Parse(UserDataManager.GetSavedValue("volume", "0,25"));
     }
 
     public void SetVolume(float value)
